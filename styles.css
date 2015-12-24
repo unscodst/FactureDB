@@ -1,0 +1,56 @@
+
+
+/*Styles image to fit in table*/
+.logoimg {
+    max-width: 128px;
+    max-height: 128px;
+}
+/* Allows the centering of an element */
+.center {
+    text-align: center;
+    clear: both;
+}
+
+/*Moves elements over 8 pixels to the right to align better*/
+.cen {
+    margin-left: 8px;
+}
+
+/* Puts a gray border on the bottom of the first table row child */
+table, tr:nth-child(1) {
+    border-bottom: 1px solid lightgray;
+}
+
+/* Puts a gray border on the right side of all table heade elements */
+table, th:nth-child(1n){
+    border-right: 1px solid lightgray;
+}
+
+/* Puts a gray border on the right and bottom of all user created rows */
+.addCell {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+/* Icon creation and sizing for cards*/
+.lightIcon {
+    background-image: url(img/ic_lightbulb_outline_white_48dp_2x.png);
+    background-position: 50% 50%;
+    background-size: 96px;
+    background-repeat: no-repeat;    
+}
+
+.buildIcon {
+    background-image: url(img/ic_build_white_48dp_2x.png);
+    background-position: 50% 50%;
+    background-size: 96px;
+    background-repeat: no-repeat;    
+}
+
+.packIcon {
+    background-image: url(img/ic_power_input_white_48dp_2x.png);
+    background-position: 50% 50%;
+    background-size: 96px;
+    background-repeat: no-repeat;    
+}
+
