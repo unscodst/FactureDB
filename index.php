@@ -17,6 +17,7 @@ if(isset($_POST['saverecord']))
 if(isset($_POST['show'])) {
     $sql = mysql_query("SELECT * FROM list_of_manufacturers");
     while($row = mysql_fetch_object($sql)) {
+        $r = $row->Logo
 ?>
 <tr>
     <td><?php echo $row-> Logo ?></td>
@@ -155,6 +156,7 @@ if(isset($_POST['show'])) {
                     $('#website').val('');
                     $('#email').val('');
                     $('#phone').val('');
+                    showdata();
 
 
                 }
