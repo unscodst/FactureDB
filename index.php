@@ -14,6 +14,31 @@ if(isset($_POST['saverecord']))
     echo 0;
     exit();
 }
+if(isset($_POST['show'])) {
+    $sql = mysql_query("SELECT * FROM list_of_manufacturers");
+    while($row = mysql_fetch_object($sql)) {
+?>
+<tr>
+    <td><?php echo $row-> Logo ?></td>
+    <td>
+        <?php echo $row-> Company ?><br><br>
+        <a href="#" class="edit"><?php echo $row-> ID?>Edit</a>
+        <a href="#" class="delete"><?php echo $row-> ID?>Delete</a>
+
+    </td>
+    <td><?php echo $row-> Country ?></td>
+    <td>
+        <?php echo $row-> Description?><br><br>
+        <strong><label>Website:</label></strong><?php echo $row-> Website?>
+        <strong><label>Email:</label></strong><?php echo $row-> Email?>
+        <strong><label>Phone Number:</label></strong><?php echo $row-> Phone_Number?>
+    </td>
+    <td><?php echo $row-> Materials ?></td>
+</tr>
+<?php
+                                           }
+    exit();
+}
 
 ?>
 
@@ -81,9 +106,7 @@ if(isset($_POST['saverecord']))
                         <th>Materials</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                    </tr>
+                <tbody id="showdata">
                 </tbody>
             </table>
         </div>
@@ -95,6 +118,8 @@ if(isset($_POST['saverecord']))
 
 <script type="text/javascript">
     $(function() {
+
+        showdata();
         $('#add').click(function() {
             var logo = $('#logo').val();
             var company = $('#company').val();
@@ -130,7 +155,7 @@ if(isset($_POST['saverecord']))
                     $('#website').val('');
                     $('#email').val('');
                     $('#phone').val('');
-                    
+
 
                 }
 
@@ -139,47 +164,20 @@ if(isset($_POST['saverecord']))
     });
     });
 
+    function showdata() {
+        $.ajax({
+            url: "index.php",
+            type: "post",
+            async: false,
+            data: {
+            'show': 1
+        },
+               success:function(r) {
+            $('#showdata').html(r);
+        }
+    });
+    }
+
 </script>
 
 
-<?php 
-include 'includes/connection.php';
-$query = "SELECT * FROM list_of_manufacturers";
-
-$result = mysql_query($query);
-
-while ($list_of_manufacturers = mysql_fetch_array($result)) {
-    echo "<div>
-            <table  border='1'>
-                <thead>
-                    <tr>
-                        <th colspan='5'>List of Manufacturers</th>
-                    </tr>
-                    <tr>
-                        <th>Logo</th>
-                        <th>Company</th>
-                        <th>Country</th>
-                        <th>Description</th>
-                        <th>Materials</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>" . $list_of_manufacturers['Logo'] . "</td>
-                        <td>" . $list_of_manufacturers['Company'] . "</td>
-                        <td>" . $list_of_manufacturers['Country'] . "</td>
-                        <td>" . $list_of_manufacturers['Description'] .         
-        "<br>" . "<br>" .
-        "<strong><label> Website: </label></strong>" . $list_of_manufacturers['Website']  . 
-        "<strong><label> Email: </label></strong>" . $list_of_manufacturers['Email'] . 
-        "<strong><label> Phone: </label></strong>" . $list_of_manufacturers['Phone_Number'] .        
-        "</td>
-                        <td>" . $list_of_manufacturers['Materials'] . "</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>";
-}
-mysql_close($conn);
-
-?>
