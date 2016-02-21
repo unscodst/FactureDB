@@ -1,4 +1,23 @@
-<!doctype html>
+<?php
+include('includes/connection.php');
+if(isset($_POST['saverecord'])) 
+{
+    mysql_query("INSERT INTO list_of_manufacturers(Logo,Company,Country,Description,Materials,Website,Email,Phone_Number) VALUES(
+    '{$_POST['logo']}',
+    '{$_POST['company']}',
+    '{$_POST['country']}',
+    '{$_POST['description']}',
+    '{$_POST['materials']}',
+    '{$_POST['website']}',
+    '{$_POST['email']}',
+    '{$_POST['phone']}')");
+    echo 0;
+    exit();
+}
+
+?>
+
+<!DOCTYPE>
 <html>
     <head>
         <meta charset="utf-8">
@@ -75,45 +94,56 @@
 </html>
 
 <script type="text/javascript">
-$(function() {
+    $(function() {
+        $('#add').click(function() {
+            var logo = $('#logo').val();
+            var company = $('#company').val();
+            var country = $('#country').val();
+            var description = $('#description').val();
+            var materials = $('#materials').val();
+            var website = $('#website').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            $.ajax({
+                url : 'index.php',
+                type : 'POST',
+                async : false,
+                data : {
+                'saverecord' : 1,
+                'logo' : logo,
+                'company' : company,
+                'country' : country,
+                'description' : description,
+                'materials' : materials,
+                'website' : website,
+                'email' : email,
+                'phone' : phone 
+            },
+                   success:function(re) {
+                if(re==0) {
+                    alert("INSERT DATA SUCCESSFULLY");
+                    $('#logo').val('');
+                    $('#company').val('');
+                    $('#country').val('');
+                    $('#description').val('');
+                    $('#materials').val('');
+                    $('#website').val('');
+                    $('#email').val('');
+                    $('#phone').val('');
+                    
 
-    $('#save').click(function() {
-        var data = $('#data').serialize();
-        alert(data); return false;
-        $.ajax({
-            url : 'undex.php',
-            type : 'POST',
-            async : fasle,
-            data : {
-            'saverecord' : 1,
-            'logo' : ,
-            'company' : ,
-            'country' : ,
-            'description' : ,
-            'materials' : ,
-            'website' : ,
-            'email' : ,
-            'phone' : 
-        },
-               success:function(re) {
+                }
 
-        }
-    }); 
-});
-});
+            }
+        }); 
+    });
+    });
 
 </script>
 
 
-
-
-
-
-
-
 <?php 
 include 'includes/connection.php';
-
 $query = "SELECT * FROM list_of_manufacturers";
 
 $result = mysql_query($query);
@@ -142,7 +172,7 @@ while ($list_of_manufacturers = mysql_fetch_array($result)) {
         "<br>" . "<br>" .
         "<strong><label> Website: </label></strong>" . $list_of_manufacturers['Website']  . 
         "<strong><label> Email: </label></strong>" . $list_of_manufacturers['Email'] . 
-        "<strong><label> Phone: </label></strong>" . $list_of_manufacturers['Phone Number'] .        
+        "<strong><label> Phone: </label></strong>" . $list_of_manufacturers['Phone_Number'] .        
         "</td>
                         <td>" . $list_of_manufacturers['Materials'] . "</td>
                     </tr>
