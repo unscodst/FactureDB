@@ -280,7 +280,7 @@ if(isset($_POST['show'])) {
         <a href="#" class="delete"><?php echo $row-> ID?>Delete</a>
 
     </td>
-    <td><?php foreach ($country as $key => $value) { $country[$key] = $value; } ?><?php print_r($value); ?>
+    <td><?php foreach ($country as $key => $value) { $country[$row-> Country] = $value;  } ?><?php print_r($value); ?> 
     </td>
     <td>
         <?php echo $row-> Description?><br><br>
