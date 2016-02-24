@@ -280,15 +280,16 @@ if(isset($_POST['show'])) {
         <a href="#" class="delete"><?php echo $row-> ID?>Delete</a>
 
     </td>
-    <td><?php foreach ($country as $key => $value) { $country[$row-> Country] = $value;  } ?><?php print_r($value); ?> 
+    <td><?php echo $country[$row->Country] ?> 
     </td>
+    <td><?php echo $row-> Materials ?></td>
     <td>
         <?php echo $row-> Description?><br><br>
         <strong><label>Website:</label></strong><?php echo $row-> Website?>
         <strong><label>Email:</label></strong><?php echo $row-> Email?>
         <strong><label>Phone Number:</label></strong><?php echo $row-> Phone_Number?>
     </td>
-    <td><?php echo $row-> Materials ?></td>
+    
 </tr>
 <?php
     }
@@ -329,16 +330,16 @@ if(isset($_POST['show'])) {
                     ?>
 
                 </select>
+            </div>            
+            <div>
+                <label>Materials:</label>
+                <input type="text" id="materials">
             </div>
             <div>
                 <label>Description:</label>
                 <textarea id="description"></textarea>
             </div>
 
-            <div>
-                <label>Materials:</label>
-                <input type="text" id="materials">
-            </div>
             <div>
                 <label>Website:</label> 
                 <input type="text" id="website">
@@ -366,8 +367,9 @@ if(isset($_POST['show'])) {
                         <th>Logo</th>
                         <th>Company</th>
                         <th>Country</th>
-                        <th>Description</th>
                         <th>Materials</th>
+                        <th>Description</th>
+                        
                     </tr>
                 </thead>
                 <tbody id="showdata">
