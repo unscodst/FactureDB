@@ -114,4 +114,67 @@ if(isset($_POST['show'])) {
     </body>
 </html>
 
+<script>
+    $(function() {
+        showdata();
+        $('#add').click(function() {
+            var logo = $('#logo').val();
+            var company = $('#company').val();
+            var country = $('#country').val();
+            var description = $('#description').val();
+            var materials = $('#materials').val();
+            var website = $('#website').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            $.ajax({
+                url : 'index.php',
+                type : 'POST',
+                async : false,
+                data : {
+                'saverecord' : 1,
+                'logo' : logo,
+                'company' : company,
+                'country' : country,
+                'description' : description,
+                'materials' : materials,
+                'website' : website,
+                'email' : email,
+                'phone' : phone 
+            },
+                   success:function(re) {
+                if(re==0) {
+                    alert("INSERT DATA SUCCESSFULLY");
+                    $('#logo').val('');
+                    $('#company').val('');
+                    $('#country').val('US');
+                    $('#description').val('');
+                    $('#materials').val('');
+                    $('#website').val('');
+                    $('#email').val('');
+                    $('#phone').val('');
+                    showdata();
+                }
+            }
+        }); 
+    });
+    });
+    function showdata() {
+        $.ajax({
+            url: "index.php",
+            type: "post",
+            async: false,
+            data: {
+            'show': 1
+        },
+               success:function(r) {
+            $('#showdata').html(r);
+        }
+    });
+    }
+
+
+        ?>
+
+
+</script>
 
