@@ -171,10 +171,5 @@ if(isset($_POST['show'])) {
         }
     });
     }
-
-
-        ?>
-
-
 </script>
 
