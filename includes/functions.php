@@ -1,6 +1,32 @@
 <?php 
 require_once('includes/connection.php');
 
+$db = new DB_Connection();
+
+if(isset($_POST['saverecord']) && !empty($_POST['saverecord']))
+{
+    switch($_POST['saverecord']) {
+        case "submitManufacturer" :
+            if(isset($_POST['json']) && !empty($_POST['json']))
+            {
+                $jObj = $_POST['json'];
+                
+            }
+    }
+    mysql_query("INSERT INTO list_of_manufacturers(Logo,Company,Country,Description,Materials,Website,Email,Phone_Number) VALUES(
+    '{$_POST['logo']}',
+    '{$_POST['company']}',
+    '{$_POST['country']}',
+    '{$_POST['description']}',
+    '{$_POST['materials']}',
+    '{$_POST['website']}',
+    '{$_POST['email']}',
+    '{$_POST['phone']}')");
+    echo 0;
+    exit();
+}
+
+
 $country = array("AF" => "Afghanistan",
                  "AX" => "Åland Islands",
                  "AL" => "Albania",
@@ -247,17 +273,3 @@ $country = array("AF" => "Afghanistan",
                  "ZW" => "Zimbabwe");
 
 
-if(isset($_POST['saverecord'])) 
-{
-    mysql_query("INSERT INTO list_of_manufacturers(Logo,Company,Country,Description,Materials,Website,Email,Phone_Number) VALUES(
-    '{$_POST['logo']}',
-    '{$_POST['company']}',
-    '{$_POST['country']}',
-    '{$_POST['description']}',
-    '{$_POST['materials']}',
-    '{$_POST['website']}',
-    '{$_POST['email']}',
-    '{$_POST['phone']}')");
-    echo 0;
-    exit();
-}
