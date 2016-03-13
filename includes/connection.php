@@ -1,18 +1,21 @@
 <?php 
-define('dbhost','localhost');
-define('dbuser','root');
-define('dbpass','34gn5jm6');
-define('db','facturedb');
+$db_host = 'localhost';
+$db_user = 'root';
+$db_pass = '34gn5jm6';
+$db_name = 'facturedb';
 
 
-$conn = mysql_connect(dbhost, dbuser, dbpass);
-if(!$conn) {
-    die('Could not connect:' . mysql_error());
+$conn = new mysqli($db_host, $db_user, $db_pass);
+
+if (mysqli_connect_errno()) {
+    printf("Failed to connect: %s\n", mysqli_connect_error());
+    exit();
 }
-$db_selected = mysql_select_db(db, $conn);
+
+$db_selected = mysqli_select_db($db_name, $conn);
 
 if(!$db_selected) {
-    die('Can\'t use' . db . ':' . mysql_error());
+    die('Can\'t use' . db . ':' . mysqli_error());
 }
 
 public function addManufacturer() {
