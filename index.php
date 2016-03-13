@@ -22,11 +22,8 @@ if(isset($_POST['show'])) {
         <strong><label>Email:</label></strong><?php echo $row-> Email?>
         <strong><label>Phone Number:</label></strong><?php echo $row-> Phone_Number?>
     </td>
-<<<<<<< HEAD
-
-=======
     <td><?php echo $row-> Materials ?></td>
->>>>>>> parent of 3a50f27... Country Names
+    <td><?php echo $row-> Materials ?></td>
 </tr>
 <?php
                                            }
@@ -47,7 +44,6 @@ if(isset($_POST['show'])) {
     </head>
     <body>
         <div id="data">
-<<<<<<< HEAD
             <form action="functions.php">
                 <div>
                     <label>Logo:</label>
@@ -94,7 +90,6 @@ if(isset($_POST['show'])) {
                     <input type="submit" value="Submit" id="submit">
                 </div>
             </form>
-=======
             <div>
                 <label>Logo:</label>               
                 <input type="text" id="logo">
@@ -140,7 +135,6 @@ if(isset($_POST['show'])) {
             <div>
                 <input type="button" value="Add" id="add">
             </div>
->>>>>>> parent of 3a50f27... Country Names
         </div>
         <div>
             <table  border='1'>
@@ -153,10 +147,8 @@ if(isset($_POST['show'])) {
                         <th>Company</th>
                         <th>Country</th>
                         <th>Description</th>
-<<<<<<< HEAD
-=======
                         <th>Materials</th>
->>>>>>> parent of 3a50f27... Country Names
+                        <th>Materials</th>
                     </tr>
                 </thead>
                 <tbody id="showdata">
