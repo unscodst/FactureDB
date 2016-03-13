@@ -14,16 +14,19 @@ if(isset($_POST['show'])) {
         <a href="#" class="delete"><?php echo $row-> ID?>Delete</a>
 
     </td>
-    <td><?php echo $country[$row->Country] ?> 
+    <td><?php echo $row-> Country ?> 
     </td>
-    <td><?php echo $row-> Materials ?></td>
     <td>
         <?php echo $row-> Description?><br><br>
         <strong><label>Website:</label></strong><?php echo $row-> Website?>
         <strong><label>Email:</label></strong><?php echo $row-> Email?>
         <strong><label>Phone Number:</label></strong><?php echo $row-> Phone_Number?>
     </td>
+<<<<<<< HEAD
 
+=======
+    <td><?php echo $row-> Materials ?></td>
+>>>>>>> parent of 3a50f27... Country Names
 </tr>
 <?php
                                            }
@@ -44,6 +47,7 @@ if(isset($_POST['show'])) {
     </head>
     <body>
         <div id="data">
+<<<<<<< HEAD
             <form action="functions.php">
                 <div>
                     <label>Logo:</label>
@@ -90,6 +94,53 @@ if(isset($_POST['show'])) {
                     <input type="submit" value="Submit" id="submit">
                 </div>
             </form>
+=======
+            <div>
+                <label>Logo:</label>               
+                <input type="text" id="logo">
+            </div>
+            <div>
+                <label>Company:</label>               
+                <input type="text" id="company">
+            </div>
+            <div>
+                <label>Country</label>
+                <select id="country">
+                    <?php 
+                    foreach ($country as $key => $value) {
+                    ?>
+                    <option value="<?=$key ?>" title="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value)?></option>
+                    <?php
+                    }
+                    ?>
+
+                </select>
+            </div>
+            <div>
+                <label>Description:</label>
+                <textarea id="description"></textarea>
+            </div>
+
+            <div>
+                <label>Materials:</label>
+                <input type="text" id="materials">
+            </div>
+            <div>
+                <label>Website:</label> 
+                <input type="text" id="website">
+            </div>
+            <div>
+                <label>Email:</label> 
+                <input type="text" id="email">
+            </div>
+            <div>
+                <label>Phone Number:</label> 
+                <input type="text" id="phone"> 
+            </div>
+            <div>
+                <input type="button" value="Add" id="add">
+            </div>
+>>>>>>> parent of 3a50f27... Country Names
         </div>
         <div>
             <table  border='1'>
@@ -101,8 +152,11 @@ if(isset($_POST['show'])) {
                         <th>Logo</th>
                         <th>Company</th>
                         <th>Country</th>
-                        <th>Materials</th>
                         <th>Description</th>
+<<<<<<< HEAD
+=======
+                        <th>Materials</th>
+>>>>>>> parent of 3a50f27... Country Names
                     </tr>
                 </thead>
                 <tbody id="showdata">
