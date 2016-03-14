@@ -31,7 +31,6 @@ if(isset($_POST['show'])) {
 }
 
 ?>
-
 <!DOCTYPE>
 <html>
     <head>
